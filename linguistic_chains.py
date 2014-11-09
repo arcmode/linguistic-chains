@@ -66,14 +66,29 @@ class LinguisticChains:
                 for idx in comparison_range:
                     possible_match = large[:idx] + large[(idx + 1):]
                     if possible_match in shorter:
-                        if not possible_match in graph:
-                            graph[possible_match] = set()
-                        graph[possible_match].add(large)
+                        if possible_match in graph:
+                            graph[possible_match].add(large)
+                        else:
+                            graph[possible_match] = set([large])
         return graph
 
     @staticmethod
     def compute_paths(graph):
-        print graph
+        for from_node, to_nodes in graph.viewitems():
+            LinguisticChains.traverse(graph, [from_node], to_nodes)
+
+    @staticmethod
+    def traverse(graph, from_path = [], to_nodes = []):
+        # todo: caching
+        paths = []
+        for node in to_nodes:
+            path = from_path + [node]
+            if node in graph:
+                LinguisticChains.traverse(graph, path, graph[node])
+            else:
+                paths.append(path)
+        print paths
+
 
 # todo: validate args
 if __name__ == '__main__' and len(sys.argv) == 2:

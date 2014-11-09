@@ -2,42 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Linguistic Chains
-
-# Write a program (Java or Python) that finds the word from which one can
-# remove the most letters, one at a time, such that each resulting word is
-# itself a valid word. For example, you can remove seven letters from
-# "starting":
-
-# starting => stating => statin => satin => sati => sat => at => a
-
-# assuming your dictionary is:
-
-# a
-# at
-# bat
-# be
-# bee
-# sat
-# sati
-# satin
-# starting
-# statin
-# stating
-
-# The program must take the path to a dictionary as input. The dictionary
-# will contain words, one per line. The program must output the longest
-# chains which can be created from the words in the dictionary. The format
-# must be as above with one space between each word and the following "=>"
-# and one space after the "=>". If there are multiple words that produce
-# equal length chains, then print each chain on a line by itself.
-
-# Your program must work with large dictionaries with more than a hundred
-# thousand words.
-
-# What is the complexity of your program?
-
-# example: ./linguistic_chains.py dictionary.txt
+# example usage: ./linguistic_chains.py real_dict.txt
 
 import sys
 import difflib
@@ -53,13 +18,12 @@ def pairwise(iterable):
 
 
 class LinguisticChains:
-    # todo: transactions
 
     @staticmethod
-    def build_graph(lines):
+    def make_graph(lines):
         graph = dict()
         groups = [set(group)
-                  for key, group in itertools.groupby(lines, keyfunc)]
+                  for key, group in itertools.groupby(lines, lambda x: len(x))]
         for shorter, larger in pairwise(groups):
             comparison_range = xrange(0, len(list(larger)[0]))
             for large in larger:
@@ -73,32 +37,56 @@ class LinguisticChains:
         return graph
 
     @staticmethod
-    def compute_paths(graph):
+    def compute_all_paths(graph):
+        all_paths = []
         for from_node, to_nodes in graph.viewitems():
-            LinguisticChains.traverse(graph, [from_node], to_nodes)
+            all_paths += LinguisticChains.compute_paths(
+                graph, [from_node], to_nodes, [])
+        return all_paths
 
     @staticmethod
-    def traverse(graph, from_path = [], to_nodes = []):
+    def compute_paths(graph, from_path=[], to_nodes=[], accum_paths=[]):
         # todo: caching
-        paths = []
         for node in to_nodes:
             path = from_path + [node]
             if node in graph:
-                LinguisticChains.traverse(graph, path, graph[node])
+                LinguisticChains.compute_paths(
+                    graph, path, graph[node], accum_paths)
             else:
-                paths.append(path)
-        print paths
+                accum_paths.append(path)
+        return accum_paths
 
+    @staticmethod
+    def get_longest(paths):
+        sorted_paths = sorted(paths, key=lambda x: -len(x))
+        longest_paths = []
+        longest_paths_length = len(sorted_paths[0])
+        for path in sorted_paths:
+            if len(path) < longest_paths_length:
+                break
+            longest_paths.append(path)
+        return longest_paths
+
+    @staticmethod
+    def report(paths):
+        report = []
+        for path in paths:
+            report.append(" => ".join(path))
+        return report
+
+    @staticmethod
+    def print_longest_chains(dict_path):
+        lines = []
+        with open(dict_path) as dictionary:
+            lines = sorted([line.rstrip('\n').lower()
+                            for line in dictionary if line.strip('')], key=lambda x: len(x))
+        graph = LinguisticChains.make_graph(lines)
+        paths = LinguisticChains.compute_all_paths(graph)
+        longest_paths = LinguisticChains.get_longest(paths)
+        report = LinguisticChains.report(longest_paths)
+        for datum in report:
+            print datum
 
 # todo: validate args
 if __name__ == '__main__' and len(sys.argv) == 2:
-    dictionary_path = sys.argv[1]
-    lines = []
-
-    with open(dictionary_path) as dictionary:
-        keyfunc = lambda x: len(x)
-        lines = sorted([line.rstrip('\n').lower()
-                        for line in dictionary if line.strip('')], key=keyfunc)
-
-    graph = LinguisticChains.build_graph(lines)
-    paths = LinguisticChains.compute_paths(graph)
+    LinguisticChains.print_longest_chains(sys.argv[1])

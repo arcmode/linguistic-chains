@@ -26,7 +26,8 @@ if you want to run the code against a real world input then run `./print_longest
 
 1.  For each edge (word => wordy)
 2.  Compute paths traversing all edges
-3.  Sort
+3.  Sort paths by length (desc)
+4.  Pick longest paths
 
 ### Time complexity
 

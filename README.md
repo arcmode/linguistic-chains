@@ -13,7 +13,7 @@ if you want to run the code against a real world input then run `./print_longest
 
 ### Algorythm
 
-## Building the graph
+#### Building the graph
 
 1.  Group words by length
 2.  For each pair of groups like (`one_letters`, `two_letters`)
@@ -22,7 +22,7 @@ if you want to run the code against a real world input then run `./print_longest
 5.  If the possible match is present in the group of shorter words
 6.  Append match as an edge to the graph
 
-## Computing the paths
+#### Computing the paths
 
 1.  For each edge (word => wordy)
 2.  Compute paths traversing all edges
@@ -31,4 +31,8 @@ if you want to run the code against a real world input then run `./print_longest
 
 ### Time complexity
 
-`O(n log n)`
+#### Building the graph
+`O(k n)` where `n` is the number of words and k the average length of the words having more than one letter
+
+#### Computing the paths
+`O(m^2)` where `m` is the number of nodes in the graph.

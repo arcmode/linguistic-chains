@@ -6,4 +6,5 @@ set title "Elapsed time"
 set xlabel "sample size [%]"
 set ylabel "time [s]"
 set logscale y
+set logscale x
 plot "gnuplot.data" title "" with lines

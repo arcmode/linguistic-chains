@@ -1,0 +1,129 @@
+====================================================
+
+SAMPLE SIZE = 10%
+
+Sample size: 23574
+Elapsed time: 0.449647
+
+Sample size: 23584
+Elapsed time: 0.468865
+
+Sample size: 23564
+Elapsed time: 0.452158
+
+====================================================
+
+SAMPLE SIZE = 20%
+
+Sample size: 47013
+Elapsed time: 0.568739
+
+Sample size: 47121
+Elapsed time: 0.562436
+
+Sample size: 47198
+Elapsed time: 0.588386
+
+====================================================
+
+SAMPLE SIZE = 30%
+
+Sample size: 70866
+Elapsed time: 0.668751
+
+Sample size: 70960
+Elapsed time: 0.692397
+
+Sample size: 70701
+Elapsed time: 0.694293
+
+====================================================
+
+SAMPLE SIZE = 40%
+
+Sample size: 94745
+Elapsed time: 0.78445
+
+Sample size: 94329
+Elapsed time: 0.7862
+
+Sample size: 94429
+Elapsed time: 0.786597
+
+====================================================
+
+SAMPLE SIZE = 50%
+
+Sample size: 117998
+Elapsed time: 0.934394
+
+Sample size: 118062
+Elapsed time: 0.921367
+
+Sample size: 118431
+Elapsed time: 0.988034
+
+====================================================
+
+SAMPLE SIZE = 60%
+
+Sample size: 141418
+Elapsed time: 1.069077
+
+Sample size: 141243
+Elapsed time: 1.109252
+
+Sample size: 141904
+Elapsed time: 1.133136
+
+====================================================
+
+SAMPLE SIZE = 70%
+
+Sample size: 165436
+Elapsed time: 1.297318
+
+Sample size: 164976
+Elapsed time: 1.272642
+
+Sample size: 165012
+Elapsed time: 1.246414
+
+====================================================
+
+SAMPLE SIZE = 80%
+
+Sample size: 188852
+Elapsed time: 1.565825
+
+Sample size: 188778
+Elapsed time: 1.490883
+
+Sample size: 188653
+Elapsed time: 1.540038
+
+====================================================
+
+SAMPLE SIZE = 90%
+
+Sample size: 212292
+Elapsed time: 1.794088
+
+Sample size: 212410
+Elapsed time: 1.870323
+
+Sample size: 212298
+Elapsed time: 1.809904
+
+====================================================
+
+SAMPLE SIZE = 100%
+
+Sample size: 235886
+Elapsed time: 2.153689
+
+Sample size: 235886
+Elapsed time: 2.137205
+
+Sample size: 235886
+Elapsed time: 2.15434

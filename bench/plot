@@ -1,0 +1,8 @@
+#!/usr/local/bin/gnuplot
+# exampleusage: ./plot > time.png
+
+set terminal "png"
+set title "Elapsed time"
+set xlabel "sample size [%]"
+set ylabel "time [s]"
+plot "gnuplot.data" title "" with lines

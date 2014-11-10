@@ -14,8 +14,9 @@ def pairwise(iterable):
 
 def make_graph(lines):
     graph = dict()
+    keyfunc = lambda x: len(x)
     groups = [set(group)
-              for key, group in itertools.groupby(lines, lambda x: len(x))]
+              for key, group in itertools.groupby(sorted(lines, key=keyfunc), keyfunc)]
     for shorter, larger in pairwise(groups):
         comparison_range = xrange(0, len(list(larger)[0]))
         for large in larger:

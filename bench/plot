@@ -5,4 +5,5 @@ set terminal "png"
 set title "Elapsed time"
 set xlabel "sample size [%]"
 set ylabel "time [s]"
+set logscale y
 plot "gnuplot.data" title "" with lines

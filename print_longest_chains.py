@@ -1,7 +1,14 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+"""Linguistic Chains analysis runner.
 
-# example usage: ./print_longest_chains.py ìnput/unix_words.txt
+This module shows a solution to the homework problem.
+
+Examples:
+    Run the homework solution:
+
+        $ python measure_time.py input/unix_words.txt
+"""
 
 
 def print_longest_chains(dict_path):

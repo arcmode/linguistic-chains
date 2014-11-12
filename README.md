@@ -34,7 +34,10 @@ if you want to run the code against a real world input then run `./print_longest
 ### Time complexity
 
 #### Building the graph
-`O(k n)` where `n` is the number of words and k the average length of the words having more than one letter
+`O(l n)` where `n` is the number of words and `l` is the average length of the words having more than one letter
 
 #### Computing the paths
-`O(m^2)` where `m` is the number of nodes in the graph.
+`O(m^2)` where `m` is the number of nodes in the graph (proportional to `n^2`). In the expected case (english word list found in unix systems at `/usr/share/dict/words`) the proportionality constant is in the order of `1e-06`.
+
+#### Finally
+The time complexity of the solution is given by `O((l n) + (k n^2)` where `k` is in the order of `1e-12` and `l` in the order of `1e1`. This is polynomial time, but as you can see the quadratic component is greatly amortized. See `./bench/time.png`

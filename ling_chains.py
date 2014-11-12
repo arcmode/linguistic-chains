@@ -32,18 +32,20 @@ def make_graph(lines):
 
 def compute_all_paths(graph):
     all_paths = []
-    for from_node, to_nodes in graph.viewitems():
-        all_paths += compute_paths(
-            graph, [from_node], to_nodes, [])
+    for node in graph.keys():
+        all_paths += compute_paths(graph, [node])
     return all_paths
 
 
-def compute_paths(graph, from_path=[], to_nodes=[], accum_paths=[]):
-    # todo: caching
-    for node in to_nodes:
+def compute_paths(graph, from_path=[], accum_paths=None):
+    # todo: memoize
+    if accum_paths == None:
+        accum_paths = []
+    through_nodes = graph[from_path[-1]]
+    for node in through_nodes:
         path = from_path + [node]
         if node in graph:
-            compute_paths(graph, path, graph[node], accum_paths)
+            compute_paths(graph, path, accum_paths)
         else:
             accum_paths.append(path)
     return accum_paths

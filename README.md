@@ -1,14 +1,16 @@
 
 ### Important files
 
-* `ling_chains.py` -> code for solving the problem
-* `print_longest_chain.py` -> executable running the code
+* `ling_chains.py`: code for solving the given problem
+* `ling_chains_test.py`: unit tests
+* `print_longest_chain.py`: executable with the solution
 
 ### How to test the solution
 
-My apologies for not writing unit tests.
+If you want to run the unit tests run `python ling_chains_test.py -v`
 
 In order to run the code against the test example input run `./print_longest_chains.py input/dictionary.txt`
+
 if you want to run the code against a real world input then run `./print_longest_chains.py input/unix_words.txt`
 
 ### Algorythm
